@@ -5,29 +5,38 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
-import android.view.Display.Mode
 import android.view.LayoutInflater
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import h.example.loginapp.MVP.ext.InfoActivity
-import h.example.loginapp.database.DBHandler
-import h.example.loginapp.database.Model.UserEntity
 import h.example.loginapp.databinding.ActivityMainBinding
 import h.example.loginapp.remote.Model.ApiModel
 import h.example.loginapp.remote.Model.DefaultModel
 import h.example.loginapp.remote.RetrofitService
 import h.example.loginapp.remote.extRemote.ErrorUtils
-import h.example.loginapp.ui.MainActivity
 import h.example.loginapp.ui.MainActivity2
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.Error
+import kotlin.math.log
+import kotlin.properties.Delegates
 
 class ViewMainActivity(
     private val context: Context,
     private val utils: InfoActivity
 ) {
+
+    fun test(){
+
+        val array = arrayOf(1,3,5,10)
+        var count = 0
+
+        while (count < array.size)
+            Log.i("TEST" , array[count].toString())
+
+    }
 
 
     private lateinit var pref: SharedPreferences
@@ -100,14 +109,14 @@ class ViewMainActivity(
             editor.putString("code", code)
             editor.apply()
 
-                binding.textInputCode.error = null
+            binding.textInputCode.error = null
 
             confirmCode(androidId, code, email)
 
         }
 
-       val share = context.getSharedPreferences("pref" , Context.MODE_PRIVATE)
-       val login = share.getBoolean("state" , false)
+        val share = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val login = share.getBoolean("state", false)
 
         if (login) {
             context.startActivity(Intent(context, MainActivity2::class.java))
@@ -170,13 +179,11 @@ class ViewMainActivity(
             }
         }
 
-
     }
 
     private fun showText(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+
     }
-
-
 
 }

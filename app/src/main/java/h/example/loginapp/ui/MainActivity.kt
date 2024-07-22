@@ -2,6 +2,7 @@ package h.example.loginapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import h.example.loginapp.MVP.Model.ModelMainActivity
 import h.example.loginapp.MVP.Presenter.PresenterMainActivity
 import h.example.loginapp.MVP.View.ViewMainActivity
@@ -12,7 +13,6 @@ class MainActivity : AppCompatActivity() , InfoActivity {
         super.onCreate(savedInstanceState)
         val view = ViewMainActivity(this ,this)
         setContentView(view.binding.root)
-
 
         val presenter = PresenterMainActivity(view , ModelMainActivity(this))
         presenter.onCreate()
